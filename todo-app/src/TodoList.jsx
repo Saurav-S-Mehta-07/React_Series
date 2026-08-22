@@ -8,7 +8,7 @@ function TodoList(){
                     border : "none"
                 };
 
-    let [todos, setTodos] = useState([{id:uuidv4(), task:"sample"}]);
+    let [todos, setTodos] = useState([{id:uuidv4(), task:"sample", done : false}]);
     let [newTask, setNewTasks] = useState("");
 
     const addTask = (event)=>{
@@ -28,25 +28,82 @@ function TodoList(){
          })
     }
 
+    const handleEdit = (id)=>{
+        setTodos((prevTodos)=>{
+           return  prevTodos.map((todo)=>{
+                if(todo.id === id){
+                    return {
+                        ...todo,
+                        task : todo.task.toUpperCase()
+                    }
+                }
+                return todo;
+            })
+        })
+    }
+
+    const handleEditALL = ()=>{
+        setTodos((prevTodos)=>{
+           return prevTodos.map((todo)=>{
+                    return {
+                        ...todo,
+                        task : todo.task.toUpperCase()
+                    }
+            })
+        })
+    }
+
+    const handleMarkAsDone = (id)=>{
+        setTodos((prevTodos)=>{
+           return  prevTodos.map((todo)=>{
+                if(todo.id === id){
+                    return {
+                        ...todo,
+                        done : !(todo.done)
+                    }
+                }
+                return todo;
+            })
+        })
+    }
+
+     const handleDoneALL = ()=>{
+        setTodos((prevTodos)=>{
+           return prevTodos.map((todo)=>{
+                    return {
+                        ...todo,
+                        done : !(todo.done)
+                    }
+            })
+        })
+    }
+
     return (
         <div>
             <h1>Todo List by Saurav</h1>
 
-            <form action="#" onSubmit={addTask}>
+            <form action="#" onSubmit={addTask} style={{marginBottom:"10px"}}>
                 <input type="text" placeholder="enter todo.." value={newTask} onChange={handleValue} style={style}/>
                 <button>Add</button>
             </form>
 
-            <div style={{textAlign:"left"}}>
+            <div style={{textAlign:"left", border:"1px solid white", padding:"10px"}}>
                { 
                  todos.map((todo)=>(
                     <div key={todo.id} style={{display:"flex", justifyContent:"space-between", marginBottom:"5px"}}>
-                      <li style={{fontSize:"1.4rem"}}>{todo.task}</li> 
-                      <button onClick={()=>handleDelete(todo.id)}>delete</button>
+                      <li style={{fontSize:"1.4rem", textDecoration: todo.done&&"line-through"}}>{todo.task}</li> 
+                      <div>
+                        <button onClick={()=>handleDelete(todo.id)} style={{backgroundColor:"black", color:"red", marginRight:"10px"}}>delete</button>
+                        <button onClick={()=>handleEdit(todo.id)}>Update</button>
+                        <button onClick={()=>handleMarkAsDone(todo.id)} style={{backgroundColor:"black", color:todo.done?"green":"white", marginLeft:"10px"}}>Done</button>
+                      </div>
                     </div>
                  ))
                }
             </div>
+            <button onClick={handleEditALL} style={{marginTop:"10px"}}>Update ALL</button>
+            <button onClick={handleDoneALL} style={{marginTop:"10px", marginLeft:"10px"}}>Done ALL</button>
+
         </div>
     )
 }
