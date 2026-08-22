@@ -3,11 +3,14 @@ import { useState } from "react"
 export default () => {
 
     let [moves, setMoves] = useState({blue : 0, red : 0, yellow : 0, green : 0});
+    let [arr, setArr] = useState(["no moves"]);
 
     const incBlue = ()=>{
        setMoves((prevMoves)=>{
          return {...prevMoves, blue : prevMoves.blue+1}
        });
+
+       setArr((prevArr)=> [...prevArr, "blue moves"]);
     }
      const incGreen = ()=>{
        setMoves((prevMoves)=>{
@@ -28,6 +31,7 @@ export default () => {
     return (
         <div>
             <p>Game Begins</p>
+            <p>{arr}</p>
             <div className="board">
                 <p>Blue moves = {moves.blue}</p>
                 <button onClick={incBlue} style={{backgroundColor:"blue"}}>+1</button>
