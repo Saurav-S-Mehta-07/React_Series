@@ -2,7 +2,6 @@ import { useState } from "react"
 
 
 export default () => {
-    
     let [count, setCount] = useState(0);
 
     const incCount = async ()=>{
