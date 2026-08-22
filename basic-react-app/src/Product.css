@@ -1,0 +1,12 @@
+.Product{
+    background-color: aliceblue;
+    border: 1px solid black;
+    width: 200px;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 2px;
+}
+
+.Product h3{
+    color: blue;
+}
