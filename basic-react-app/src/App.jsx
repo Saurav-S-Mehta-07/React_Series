@@ -1,15 +1,13 @@
 
 import './App.css'
 
-// import ProductTab from './ProductTab'
-
-import MessageTab from './MessageTab'
+import Event from './Event'
 
 function App() {
 
   return (
     <>
-      <MessageTab/>
+     <Event></Event>
     </>
   )
 }
