@@ -1,13 +1,13 @@
 
 import './App.css'
 
-import Event from './Event'
+import Forms from './Forms'
 
 function App() {
 
   return (
     <>
-     <Event></Event>
+     <Forms/>
     </>
   )
 }
