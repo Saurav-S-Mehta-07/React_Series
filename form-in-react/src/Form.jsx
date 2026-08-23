@@ -1,38 +1,44 @@
 import { useState } from "react"
 
 export default () => {
-    let [fullname, setFullName] = useState("")
-    let [username, setUserName] = useState("")
 
-    const handleFullName = (event)=>{
-        console.log(event.target.value);
-        setFullName(event.target.value);
-    }
+    let [formData, setFormData] = useState({fullname:"", username:""});
+
+    // const handleFullName = (event)=>{
+    //     setFullName(event.target.value);
+    // }
+    // const handleUserName = (event)=>{
+    //     setUserName(event.target.value);
+    // }
 
     const handleForm = (event)=>{
         event.preventDefault();
-        setFullName("");
-        setUserName("");
+        console.log(formData);
+        setFormData({fullname:"", username:""});
         console.log("form submitted");
     }
 
-    const handleUserName = (event)=>{
-        setUserName(event.target.value);
+    let handleInputChange = (event)=>{
+        let fieldName = event.target.name;
+        let newValue = event.target.value;
+        setFormData((prevData)=>{
+            return {...prevData, [fieldName]:newValue};
+        })
     }
-
 
     return(
         <form action="" onSubmit={handleForm}>
-            <h2>{fullname && fullname}</h2>
-            <h3>{username && "@" + username}</h3>
+
+             <h2>{formData.fullname && formData.fullname}</h2>
+             <h3>{formData.username && "@"+formData.username}</h3>
 
             <label htmlFor="fullname">Fullname : </label>
-            <input type="text" placeholder="enter your full name" id="fullname" value={fullname} onChange={handleFullName}/>
+            <input type="text" placeholder="enter your full name" id="fullname" name="fullname" value={formData.fullname} onInput={handleInputChange}/>
               <br />
               <br />
 
             <label htmlFor="username">Username : </label>
-            <input type="text" placeholder="enter your username" id="username" value={username} onChange={handleUserName}/>
+            <input type="text" placeholder="enter your username" id="username" name="username" value={formData.username} onInput={handleInputChange}/>
             <br />
               <br />
 
