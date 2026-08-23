@@ -19,10 +19,8 @@ export default () => {
     }
 
     let handleInputChange = (event)=>{
-        let fieldName = event.target.name;
-        let newValue = event.target.value;
         setFormData((prevData)=>{
-            return {...prevData, [fieldName]:newValue};
+            return {...prevData, [event.target.name]:event.target.value};
         })
     }
 
