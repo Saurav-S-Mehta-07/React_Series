@@ -1,13 +1,14 @@
 
 import './App.css'
-import Form from './Form'
+
+import Comments from './Comments'
 
 function App() {
 
   return (
     <>
       <h1>Forms in React</h1>
-      <Form></Form>
+      <Comments/>
     </>
   )
 }
