@@ -1,4 +1,7 @@
 import { useState } from "react";
+import CommentCart from "./CommentCart";
+
+let comments = [];
 
 export default () => {
   let [formData, setFormData] = useState({
@@ -16,11 +19,13 @@ export default () => {
   const handleForm = (event) => {
     event.preventDefault();
     console.log(formData);
+    comments.push(formData);
     setFormData({ username: "", remarks: "", rating: 5 });
     console.log("form submitted");
   };
 
   return (
+    <>
     <form action="" onSubmit={handleForm}>
       <input
         type="text"
@@ -52,5 +57,13 @@ export default () => {
       <br />
       <button>Add Comment</button>
     </form>
+    <div>
+        {
+            comments.map((comment, index)=>{
+                return <CommentCart comment={comment} key={index}/>
+            })
+        }
+    </div>
+    </>
   );
 };
