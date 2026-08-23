@@ -16,7 +16,8 @@ export default () => {
     return(
         <form action="" onSubmit={handleForm}>
             <h1>{fullName && fullName}</h1>
-            <input type="text" placeholder="enter your name" value={fullName} onChange={handleFullName}/>
+            <label htmlFor="username">Username : </label>
+            <input type="text" placeholder="enter your name" id="username" value={fullName} onChange={handleFullName}/>
             <button style={{margin:"10px"}}>Submit</button>
         </form>
     )
