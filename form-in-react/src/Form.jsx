@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export default () => {
 
-    let [formData, setFormData] = useState({fullname:"", username:""});
+    let [formData, setFormData] = useState({fullname:"", username:"", password:""});
 
     // const handleFullName = (event)=>{
     //     setFullName(event.target.value);
@@ -14,7 +14,7 @@ export default () => {
     const handleForm = (event)=>{
         event.preventDefault();
         console.log(formData);
-        setFormData({fullname:"", username:""});
+        setFormData({fullname:"", username:"",password:""});
         console.log("form submitted");
     }
 
@@ -37,6 +37,11 @@ export default () => {
 
             <label htmlFor="username">Username : </label>
             <input type="text" placeholder="enter your username" id="username" name="username" value={formData.username} onInput={handleInputChange}/>
+            <br />
+              <br />
+
+              <label htmlFor="password">password : </label>
+            <input type="password" placeholder="enter your password" id="password" name="password" value={formData.password} onInput={handleInputChange}/>
             <br />
               <br />
 
