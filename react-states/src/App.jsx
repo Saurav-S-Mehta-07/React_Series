@@ -5,12 +5,15 @@ import LikeButton from "./LikeButton"
 
 import Callback from "./Callback"
 
+import Counter from "./Counter.jsx"
+
+import Joker from "./Joker.jsx";
+
 function App() {
 
   return (
     <>
-       <h1>States in React</h1>
-       <Callback></Callback>
+       <Joker/>
     </>
   )
 }
